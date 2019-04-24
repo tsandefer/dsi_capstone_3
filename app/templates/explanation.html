@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="static/css/main.css">
+  </head>
+
+
+  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="logo" href="logo">
+          <img src="../static/img/kairoi_logo_blue_orange_dark.png" alt="logo" width=60px height=60px>
+        </a>
+        <a class="navbar-brand" href="#myPage">Kairoi</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/#explain">EXPLAIN LYRICS</a></li>
+          <li><a href="/#about">ABOUT KAIROI</a></li>
+          <li><a href="/#model-mechanics">MODEL MECHANICS</a></li>
+          <li><a href="/#training-history">TRAINING HISTORY</a></li>
+          <li><a href="/#contact">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Container (Generation Section) -->
+  <div id="explain" class="container-fluid">
+    <div class="row">
+      <div class="col-sm-8">
+        <h2>Lyrics Explained</h2>
+          <h4><b>Input Lyrics</b></h4>
+          <h4>{{lyrics}}</h4>
+          <br>
+          <h4><b>Generated Explanation</b></h4>
+          <h4>{{explanation}}</h4>
+
+          <p><b>Model</b></h4><p>{{model}}</p>
+          <p><b>Temperature</b></h4><p>{{sentence}}</p>
+          <br>
+
+          <!-- Explain Same Lyric Again
+          <form method=get action='/'>
+            <button type="submit" class="btn btn-primary">Try Again</button>
+          </form>
+          -->
+
+          <!-- Go Back to Home Page -->
+          <form method=get action='/#explain'>
+            <button type="submit" class="btn btn-primary">Try Another Lyric</button>
+          </form>
+
+          <!-- Submit Rating of Annotation (& then go home)-->
+          <form method=post>
+            <div class="form-group">
+              <label for="formControlRange">How'd I do?</label>
+              <input type="range" name=temp class="form-control-range" id="formControlRange">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Rating</button>
+          </form>
+
+        </div>
+
+  </div>
+
+  <footer class="container-fluid text-center">
+    <a href="#myPage" title="To Top">
+      <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+    <p>DSI Capstone Project for <a href="https://www.galvanize.com">Galvanize, Inc.</a></p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,8 @@
+*.ipynb_checkpoints
+*.DS_Store
+*.csv
+data_dumps/
+data/
+notebooks/
+src_drafts/
+pickled_data/
