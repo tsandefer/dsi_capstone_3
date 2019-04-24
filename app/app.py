@@ -1,6 +1,3 @@
-'''
-Currently, this code is an example from the Fraud Detection Case Study...
-'''
 import pandas as pd
 import pickle
 from flask import Flask, render_template, request, send_from_directory, redirect, flash, url_for, jsonify, make_response, abort
