@@ -1,13 +1,15 @@
 # Neural Machine Translation: Explaining The Meaning Behind Lyrics
-![](images/genius_header2.png)
-### Using Seq2Seq LSTMs to Generate Lyric Explanations
+![](images/genius_header22.png)
+### Generating Lyric Explanations with Seq2Seq LSTMs
 
 *Capstone III Project for Galvanize Data Science Immersive, Week 12*
 
 *by Taite Sandefer*
 
 *Last Updated: 4/24/19*
+<br>
 **Currently Under Construction: Final Revisions expected by 5/1/19**
+<br>
 *App Coming Soon!*
 
 ## Table of Contents
@@ -34,13 +36,23 @@
 
 The primary goal of Genius is to explain lyrics and help make them more accessible to listeners. Generally, these are explanations regarding the semantic and/or cultural meanings behind lyrics, which can often cryptic and filled with linguistic subtleties that we wouldn't normally expect a computer to be able to pick up on.
 
-<p>
-  <img src="images/how_genius_works.png" width = 370 height = 145>  
-  <img src="images/genius_annotation.png" width = 430 height = 150>
+<p align="center">
   <img src="images/genius_demo2.gif" width = 800>
 </p>
 
 ## Kairoi
+Kairoi is the plural form of the ancient Greek word [Kairos](https://en.wikipedia.org/wiki/Kairos), meaning "the right, critical, or opportune moment for action."
+
+In Rhetoric, *kairos* describes a rhetor's "ability to adapt to and take advantage of changing, contingent circumstance," and is understood to be a key factor in their success.
+
+According to ancient Greeks, Kairos was the god of opportunity and the fleeting moment.
+         
+> "Running swiftly, balancing on the razor's edge, bald but with a lock of hair on his forehead, he wears no clothes; if you grasp him from the front, you might be able to hold him, but once he has moved on not even Zeus himself can pull him back: this is a symbol of Kairos, the brief moment in which things are possible." -- Aesop, [Fables 536 (from Phaedrus 5. 8)](https://www.theoi.com/Daimon/Kairos.html)
+
+<p align="center">
+  <img src="app/static/img/kairoi_logo_blue_orange.png" width = 500>
+</p>
+
 
 ## Tech Stack 
 - AWS EC2
@@ -70,7 +82,7 @@ Okay, okay... Technically, 19 artists. Searching for annotations from Nicki Mina
 
 # Seq2Seq LSTMs
 
-## Encoder/Decoder Architecture
+## Model Architecture
 > "Specifically, an NMT system first reads the source sentence using an encoder to build a "thought" vector, a sequence of numbers that represents the sentence meaning; a decoder, then, processes the sentence vector to emit a translation, as illustrated in Figure 1. This is often referred to as the encoder-decoder architecture. In this manner, NMT addresses the local translation problem in the traditional phrase-based approach: it can capture long-range dependencies in languages, e.g., gender agreements; syntax structures; etc., and produce much more fluent translations as demonstrated by Google Neural Machine Translation systems."
 
 ### Training Phase
@@ -89,9 +101,9 @@ Okay, okay... Technically, 19 artists. Searching for annotations from Nicki Mina
 # Results
 ## Examples (So Far)
 <p align="center">
-  <img src="app/static/img/example_no_temp.png" width = 400>
+  <img src="images/example_no_temp.png" width = 400>
   <br>
-  <img src="app/static/img/example_temp_71.png" width = 400>
+  <img src="images/example_temp_71.png" width = 400>
 </p>
 
 
@@ -109,7 +121,7 @@ translation system (Moses), when only the sentences consisting of known words ar
 - [BLEU Score paper](https://www.aclweb.org/anthology/P02-1040.pdf)
 
 
-[Back to Top](#Table-of-Contents)
+
 
 # Acknowledgements
 Many, many thanks to all of those who have been a part of this journey with me!
@@ -121,4 +133,4 @@ Many, many thanks to all of those who have been a part of this journey with me!
 - [TensorFlow's Seq2Seq](https://github.com/tensorflow/nmt)
 
 
-[Back to Top](#Table-of-Contents)
+
