@@ -3,6 +3,7 @@
 *.csv
 *.npy
 *.h5
+*.txt
 data_dumps/
 data/
 notebooks/
