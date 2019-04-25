@@ -5,52 +5,49 @@ from annotation_generator import AnnotationGenerator
 
 app = Flask(__name__)
 
-filepath = '../../cap3_models/models/'
-name = 'baseline_rms_800ep_512ld'
-weights = '-weights_final'
-annotation_generator = AnnotationGenerator(use_weights=True, models_filepath=filepath, data_filepath=filepath,
-                            trained_model=name, data_name=name, final_weights_fp=weights,
-                            latent_dim=512)
+anno_generator_256ld = AnnotationGenerator(trained_model='OG_adam_100ep_256ld',
+                                            latent_dim=256)
+anno_generator_512ld = AnnotationGenerator(trained_model='rms_80ep_512ld',
+                                            latent_dim=512)
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/', methods=['GET'])
 def home():
-    if request.method == 'POST':
-        print(request.method)
-        print(request.form)
+    return render_template('home.html')
 
-        if 'lyrics' in request.form:
-            lyrics = request.form['lyrics']
-            model = request.form['model']
-            try:
-                sentence = request.form['sentence']
-                explanation = annotation_generator.reply(lyrics, diversity=True, temp=sentence)
-            except:
-                explanation = annotation_generator.reply(lyrics, diversity=True)
-            return render_template('explanation.html', lyrics=lyrics, explanation=explanation, model=model, sentence=sentence) #temperature=temperature, model=model)
-
-
-    elif request.method == 'GET':
-        return render_template('home.html')
-
-@app.route('/explanation', methods=['POST', 'GET'])
+@app.route('/explanation', methods=['POST'])
 def respond_to_explanation():
     if request.method == 'POST':
         print(request.method)
         print(request.form)
 
-        # if 'sentence' in request.form:
-        #     lyrics = request.form['sentence']
-        #     explanation = annotation_generator.reply(lyrics, diversity=True, temp=0.65)
-        return render_template('home.html')
+        lyrics = request.form['lyrics'] if len(request.form['lyrics']) > 0 else request.form['sample_lyrics']
+        model = request.form['model']
+        try:
+            sentence = int(request.form['sentence']) / 50
+            if model == 'Seq2Seq LSTM, 256 latent dimensions (better grammar, worse intuition)':
+                explanation = anno_generator_256ld.reply(lyrics, diversity=True, temp=sentence)
+            else:
+                explanation = anno_generator_512ld.reply(lyrics, diversity=True, temp=sentence)
+        except:
+            if model == 'Seq2Seq LSTM, 256 latent dimensions (better grammar, worse intuition)':
+                explanation = anno_generator_256ld.reply(lyrics, diversity=True)
+            else:
+                explanation = anno_generator_512ld.reply(lyrics, diversity=True)
+        return render_template('explanation.html', lyrics=lyrics, explanation=explanation, sentence=sentence, model=model) #temperature=temperature, model=model)
 
-    # elif request.method == 'GET':
-        # return redirect(url_for('try_again')
-        # return render_template('explanation.html', lyrics=lyrics, explanation=explanation)
+@app.route('/contact', methods=['POST'])
+def thank_contact():
+    name = request.form['name'] if len(request.form['name']) > 0 else "blank_name"
+    email = request.form['email'] if len(request.form['email']) > 0 else "blank_email"
+    msg = request.form['comments'] if len(request.form['comments']) > 0 else "blank_comments"
+    f = open("contact_info.txt", "a")
+    f.write(name + '\n' + email + '\n' + msg + '\n\n')
+    f.close()
 
+    return render_template('contact.html', name=name)
 
-def main():
-    annotation_generator.test_run()
-    app.run(host='0.0.0.0', port=8080, debug=True, use_reloader=False)
 
 if __name__ == '__main__':
-    main()
+    anno_generator_256ld.test_run()
+    anno_generator_512ld.test_run()
+    app.run(host='0.0.0.0', port=8080, debug=True, use_reloader=False)

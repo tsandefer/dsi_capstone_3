@@ -9,8 +9,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="static/css/main.css">
-  </head>
 
+  </head>
 
   <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
   <nav class="navbar navbar-default navbar-fixed-top">
@@ -28,145 +28,157 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
+          <li><a href="#mission">MISSION</a></li>
           <li><a href="#explain">EXPLAIN LYRICS</a></li>
           <li><a href="#about">ABOUT KAIROI</a></li>
           <li><a href="#model-mechanics">MODEL MECHANICS</a></li>
-          <li><a href="#training-history">TRAINING HISTORY</a></li>
           <li><a href="#contact">CONTACT</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Container (Title/Intro Section) -->
-  <div class="jumbotron text-center">
-    <h1>Welcome to Kairoi</h1>
-    <div class="h2" color=white>A Generative Seq2Seq LSTM Model</div>
-    <p> Built to Explain Lyrics</p>
+  <div class="jumbotron jumbotron-fluid text-center">
+    <div class="container">
+      <h1 class="display-4" style="padding-top:130px">Welcome to Kairoi</h1>
+      <p class="lead">A Generative Seq2Seq LSTM Model (For Now)</p>
+    </div>
   </div>
 
+  <!-- Container (mission Section) -->
+  <div id="mission" class="container-fluid" style="position: relative; top: -30px; padding-top:150px; padding-bottom:150px;">
+        <div class="text-center">
+        <h1>Mission</h1>
+        <h3><i>To grab the lock of pragmatic meaning not once, but many times,</i></h3>
+        <h3><i>Not due to luck, but because of a deeper understanding of how natural language functions.</i></h3>
+        <br>
+        <a href='#explain'><button class="btn btn-default btn-lg" style="background-color:#3D8991; color:#ffffff;">Explain Lyrics</button></a>
+        </div>
+  </div>
 
   <!-- Container (Generation Section) -->
-    <div id="explain" class="jumbotron text-left">
+    <div id="explain" class="jumbotron text-center" style='position: relative; top: -30px; padding-top:150px; padding-bottom:200px'>
       <div class="h2" color=white>Explain Lyrics</div>
       <br>
-  <div class='inline-flex-parent'>
-          <form method=post>
+      <div class='inline-flex-parent'>
+          <form method=post action='/explanation'>
             <div class="form-group">
               <label for="exampleFormControlSelect1">Select Model</label>
               <select class="form-control" name=model id="exampleFormControlSelect1">
                 <option>Seq2Seq LSTM, 256 latent dimensions (better grammar, worse intuition)</option>
                 <option>Seq2Seq LSTM, 512 latent dimensions (worse grammar, better intuition)</option>
-                <option>Seq2Seq with Bidirectional LSTM</option>
               </select>
             </div>
+
             <div class="form-group">
-              <label for="formControlRange">Temperature</label>
+              <label for="formControlRange">Set Diversity</label>
               <input type="range" name=sentence class="form-control-range" id="formControlRange">
             </div>
 
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">Lyrics to Explain</label>
+              <label for="exampleFormControlSelect1">Select From Sample Lyrics</label>
+              <select class="form-control" name=sample_lyrics id="exampleFormControlSelect1">
+                <option>We once had things in common,
+                  now the only thing we share is the refrigerator.
+                  Ice cold, baby, I'm ice cold</option>
+                <option>Noses on a rail, little virgin wears the white</option>
+                <option>I don't do it for the 'gram, I do it for Compton</option>
+                <option>Now the thrill is gone, got no patience, 'cause I'm not a doctor</option>
+                <option>No role models to speak of. Searchin' through my memory, my memory, I couldn't find one</option>
+                <option>Thank you, next</option>
+                <option>These two wrongs'll right you</option>
+                <option>Too close to snipe you, truth told I like you. Too bold to type you, too rich to fight you.</option>
+              </select>
+            </div>
+            <h3><b>OR</b></h3>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Type Lyrics to Explain</label>
               <textarea class="form-control" name=lyrics id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-
+            <button type="submit" class="btn btn-primary" style="background-color:#295B60">Submit</button>
           </form>
-    </div>
-  </div>
+        </div>
+      </div>
 
   <!-- Container (About Section) -->
   <div id="about" class="container-fluid">
     <div class="row">
-      <div class="col-sm-8">
-        <h2>About Kairoi</h2>
-        <br>
-        <h4> <b><i>Kairoi</i></b> is the plural form of the ancient Greek word <i><a href="https://en.wikipedia.org/wiki/Kairos">Kairos,</a> </i> meaning "the right, critical, or opportune moment for action.""</h4>
-        <h4>In Rhetoric, <i><b>kairos</i></b> helps describe a rhetor's "ability to adapt to and take advantage of changing, contingent circumstance," which is a key factor in their success.</h4>
-        <h4>According to ancient Greeks, Kairos was the god of opportunity and the fleeting moment.</h4>
-          <blockquote class="blockquote">
-            <p class="mb-0">"Running swiftly, balancing on the razor's edge, bald but with a lock of hair on his forehead, he wears no clothes; if you grasp him from the front, you might be able to hold him, but once he has moved on not even Zeus himself can pull him back: this is a symbol of Kairos, the brief moment in which things are possible."</p>
-            <footer class="blockquote-footer">Aesop, <cite title="Source Title"><a href='https://www.theoi.com/Daimon/Kairos.html'>Fables 536 (from Phaedrus 5. 8) </a></cite></footer>
-          </blockquote>
-
-        <br><button class="btn btn-default btn-lg">Get in Touch</button>
-      </div>
-      <div class="col-sm-4">
-        <img src="../static/img/kairoi_logo_blue_orange_dark_2.png" class="rounded float-right" alt="logo" width=300px height=300px >
+      <div class="text-center">
+        <img src="../static/img/kairoi_logo_blue_orange_dark_2.png" class="rounded mx-auto d-block" alt="Responsive image" height=200 width=200>
       </div>
     </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <h2>About Kairoi</h2>
+        <h4><b>Kairoi</b> is the plural form of <b><a href="https://en.wikipedia.org/wiki/Kairos">Kairos</a></b>, a rhetorical term that describes a speaker's ability to adapt to and take advantage of changing, contingent circumstance. To the ancient Greeks, Kairos was the god of opportunity and the fleeting moment.</h4>
+        <blockquote class="blockquote">
+          <p class="mb-0">"Running swiftly, balancing on the razor's edge, bald but with a lock of hair on his forehead, he wears no clothes; if you grasp him from the front, you might be able to hold him, but once he has moved on not even Zeus himself can pull him back: this is a symbol of Kairos, the brief moment in which things are possible."</p>
+          <footer class="blockquote-footer">Aesop, <cite title="Source Title"><a href='https://www.theoi.com/Daimon/Kairos.html'>Fables 536 (from Phaedrus 5. 8) </a></cite></footer>
+        </blockquote>
+        <h4>In NLP, text is often treated like a sequential time-series problem. Many of today's tools use frequentist statistical practices to identify patterns that tend to capture syntax more than semantic meaning. State of the art tools, like Seq2Seq and Attention Mechanisms, focus on finding the <i>right</i> sequential patterns in text, which is why they embody the qualitative and subjective concept of time that the word Kairos represents.</h4>
+        <br>
+        <a href='#contact'><button class="btn btn-default btn-lg">Get In Touch</button></a>
+    </div>
   </div>
-
 
   <!-- Container (Model Mechanics Section) -->
 <div id="model-mechanics" class="container-fluid">
   <div class="row">
     <div class="col-sm-8">
-      <h2>Model Mechanics</h2><br>
-      <h4>Neural Machine Translation</h4>
-      <p>Seq2Seq Models have been successful in NLP Translation tasks over the past few years. The lyric-annotation pair training data from Genius can be assumed to be similar in meaning, since the annotations are meant to explain the lyrics, which allows us to frame this as a translation problem that can be modeled with Seq2Seq.</p>
-
-      <h4>Data Overview</h4>
-      <p><a href='https://genius.com/'>Genius.com</a> is an online community where users browse, rate, and create annotations for lyrics to help explain their meaning and context.</p>
-      <p>This application was made using a simple Seq2Seq LSTM Model that was trained on 7,889 pairs of lyrics and annotations that were obtained from the <a href='https://docs.genius.com/'>Genius.com API.</a></p>
-      <br>
-      <button class="btn btn-default btn-lg" action='/#contact'>Get In Touch</button>
+      <h2>Model Mechanics</h2>
+      <h4>Seq2Seq Models have been successful in NLP Translation tasks over the past few years. The lyric-annotation pair training data from Genius can be assumed to be similar in meaning, since the annotations are meant to explain the lyrics, which allows us to frame this as a translation problem that can be modeled with Seq2Seq.</h4>
+      <h4><a href='https://genius.com/'>Genius.com</a> is an online community where users browse, rate, and create annotations for lyrics to help explain their meaning and context. This application was made using simple Seq2Seq LSTM Models that were trained for 100 epochs on 7,889 pairs of lyrics and annotations that were obtained from the <a href='https://docs.genius.com/'>Genius.com API.</a></h4>
     </div>
+  </div>
     <div class="row">
-      <div class="column">
-        <img src="../static/img/s2s_training.png" alt="training" height=400 width=200>
+      <div class="column" style="margin-left:20px; margin-right:50px;">
+        <h3>Training Architecture</h3>
+        <br>
+        <img src="../static/img/s2s_training.png"  alt="training" height=600 width=300>
       </div>
-      <div class="column">
-        <img src="../static/img/inference.png" alt="inference" height=400 width=200>
+      <div class="column" style="margin-left:50px; margin-right:20px;">
+        <h3>Inference Architecture</h3>
+        <br>
+        <img src="../static/img/inference.png" alt="inference" height=600 width=300>
       </div>
     </div>
   </div>
-</div>
+  <a href='#contact'><button class="btn btn-default btn-lg">Get In Touch</button></a>
 
-<!-- Container (About Section) -->
-<div id="training-history" class="container-fluid">
-  <div class="row">
-    <div class="col-sm-8">
-      <h2>Training History</h2>
-      <br>
-      <h4> </h4>
-      <br><button class="btn btn-default btn-lg">Get in Touch</button>
-    </div>
-    <div class="col-sm-4">
-      <img src="../static/img/kairoi_logo_blue_orange_dark_2.png" alt="logo" width=300px height=300px>
-    </div>
-  </div>
 </div>
 
     <!-- Container (Contact Form) -->
   <div id="contact" class="container-fluid bg-grey">
-    <h2 class="text-center">LET'S GET IN CONTACT</h2>
+    <h2 class="text-center">CONTACT</h2>
     <div class="row">
       <div class="col-sm-5">
+        <h3>Taite Sandefer</h3>
         <p><span class="glyphicon glyphicon-map-marker"></span> Denver, CO</p>
         <p><span class="glyphicon glyphicon-phone"></span> (512)965-7295</p>
         <p><span class="glyphicon glyphicon-envelope"></span> taite.sandefer@gmail.com</p>
       </div>
       <div class="col-sm-7">
+        <form method=post action='/contact'>
         <div class="row">
           <div class="col-sm-6 form-group">
-            <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+            <input class="form-control" id="name" name=name placeholder="Name" type="text" required>
           </div>
           <div class="col-sm-6 form-group">
-            <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+            <input class="form-control" id="email" name=email placeholder="Email" type="email" required>
           </div>
         </div>
-        <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+        <textarea class="form-control" id="comments" name=comments placeholder="Comment" rows="5"></textarea><br>
         <div class="row">
+
           <div class="col-sm-12 form-group">
             <button class="btn btn-default pull-right" type="submit">Send</button>
           </div>
+        </form>
+
         </div>
       </div>
     </div>
   </div>
-
 
   <footer class="container-fluid text-center">
     <a href="#myPage" title="To Top">
@@ -174,7 +186,6 @@
     </a>
     <p>DSI Capstone Project for <a href="https://www.galvanize.com">Galvanize, Inc.</a></p>
   </footer>
-
 
   </body>
 </html>

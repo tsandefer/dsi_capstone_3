@@ -1,6 +1,8 @@
 *.ipynb_checkpoints
 *.DS_Store
 *.csv
+*.npy
+*.h5
 data_dumps/
 data/
 notebooks/

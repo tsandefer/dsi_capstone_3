@@ -2,7 +2,7 @@ import numpy as np
 import re
 
 from keras.models import Model
-from keras.layers import Input, LSTM, Dense, Bidirectional, Concatenate
+from keras.layers import Input, LSTM, Dense
 from keras.callbacks import ModelCheckpoint
 
 class AnnotationGenerator(object):
@@ -10,26 +10,17 @@ class AnnotationGenerator(object):
     Character-based seq2seq model that uses pretrained weights to allow a user to pass in lyrics to be annotated/explained
     '''
 
-    def __init__(self, trained_model='adam_100ep_256ld',
-                        models_filepath='./models/',
-                        data_filepath='./data/',
-                        final_weights_fp='_weights',
-                        data_name='data',
-                        use_bidirectional=False,
-                        latent_dim=256,
-                        temp=1,
-                        start_char='\v',
-                        end_char='\b'):
-
+    def __init__(self, use_weights=True, trained_model='base', models_filepath='./',
+                data_filepath='./', final_weights_fp='_final_weights',
+                data_name='baseline_data', latent_dim=256, temp=1, start_char='\v',
+                end_char='\b'):
         self.trained_model = trained_model
         self.data_filepath = data_filepath
         self.models_filepath = models_filepath
         self.data_name = data_name
         self.final_weights_fp = final_weights_fp
 
-        self.use_bidirectional = use_bidirectional
-
-        self.latent_dim = latent_dim # 256 or 512
+        self.latent_dim = latent_dim # 256
         self.temp = temp # for sampling w/ diversity
 
         self.start_char = start_char
@@ -49,31 +40,22 @@ class AnnotationGenerator(object):
         self.reverse_target_char_index = np.load(f'{self.data_filepath}{self.data_name}_reverse_target_char_index.npy').item()
 
         # Define encoder model input and LSTM layers and states exactly as defined in training model
-        encoder_inputs = Input(shape=(None, self.num_encoder_tokens), name='encoder_inputs')
-        if self.use_bidirectional:
-            encoder = Bidirectional(LSTM(self.latent_dim, return_state=True, name='encoder_LSTM')) #, merge_mode='concat')
-            encoder_outputs, forward_h, forward_c, backward_h, backward_c = encoder(encoder_inputs)
-
-            # discard 'encoder_outputs' and only keep the h anc c states.
-            state_h = Concatenate()([forward_h, backward_h])
-            state_c = Concatenate()([forward_c, backward_c])
-        else:
+        if use_weights:
+            encoder_inputs = Input(shape=(None, self.num_encoder_tokens), name='encoder_inputs')
             encoder = LSTM(self.latent_dim, return_state=True, name='encoder_LSTM')
             encoder_outputs, state_h, state_c = encoder(encoder_inputs)
+            encoder_states = [state_h, state_c]
 
-        encoder_states = [state_h, state_c]
+            decoder_inputs = Input(shape=(None, self.num_decoder_tokens), name='decoder_inputs')
+            decoder_lstm = LSTM(self.latent_dim, return_sequences=True, return_state=True, name='decoder_lstm')
+            decoder_outputs, _, _ = decoder_lstm(decoder_inputs, initial_state=encoder_states)
+            decoder_dense = Dense(self.num_decoder_tokens, activation='softmax', name='decoder_dense')
+            decoder_outputs = decoder_dense(decoder_outputs)
 
-        decoder_lstm_dim = self.latent_dim * 2 if self.use_bidirectional else self.latent_dim
-
-
-        decoder_inputs = Input(shape=(None, self.num_decoder_tokens), name='decoder_inputs')
-        decoder_lstm = LSTM(decoder_lstm_dim, return_sequences=True, return_state=True, name='decoder_lstm')
-        decoder_outputs, _, _ = decoder_lstm(decoder_inputs, initial_state=encoder_states)
-        decoder_dense = Dense(self.num_decoder_tokens, activation='softmax', name='decoder_dense')
-        decoder_outputs = decoder_dense(decoder_outputs)
-
-        self.model = Model([encoder_inputs, decoder_inputs], decoder_outputs)
-        self.model.load_weights(f'{self.models_filepath}{self.trained_model}{self.final_weights_fp}.h5')
+            self.model = Model([encoder_inputs, decoder_inputs], decoder_outputs)
+            self.model.load_weights(f'{self.models_filepath}{self.trained_model}{self.final_weights_fp}.h5')
+        else:
+            self.model = load_model(f'{self.models_filepath}{self.trained_model}.h5')
 
         # create encoder and decoder models for prediction
         self.encoder_model = Model(encoder_inputs, encoder_states)
@@ -151,22 +133,37 @@ class AnnotationGenerator(object):
         return decoded_sentence
 
     def test_run(self, chat=False):
-        input_sentence = "she callin', she textin', she’s fallin', but let me explain"
+        # input_sentence_1 = "bloodsuckin' succubuses, what the fuck is up with this?"
+        input_sentence_2 = "she callin', she textin', she’s fallin', but let me explain"
+        # input_sentence_3 = "i'm tryna make the goosebumps on your inner thigh show"
 
-        print(f"\n\nInput Sentence: {input_sentence}")
-        print(f"Reply: {self.reply(input_sentence)}")
+        # Testing temperatures
+        # print(f"\nInput Sentence #1: {input_sentence_1}")
+        # print(f"Reply #1 (No Diversity): {self.reply(input_sentence_1)}")
+        # print(f"\nInput Sentence #1: {input_sentence_1}")
+        # print(f"Reply #2 (Temp=0.4): {self.reply(input_sentence_1, diversity=True, temp=0.55)}")
+        # print(f"\nInput Sentence #1: {input_sentence_1}")
+        # print(f"Reply #3 (Temp=0.55): {self.reply(input_sentence_1, diversity=True, temp=0.60)}")
+        # print(f"\nInput Sentence #1: {input_sentence_1}")
+        # print(f"Reply #4 (Temp=0.65): {self.reply(input_sentence_1, diversity=True, temp=0.65)}")
+        # print(f"\nInput Sentence #1: {input_sentence_1}")
+        # print(f"Reply #5 (Temp=0.75): {self.reply(input_sentence_1, diversity=True, temp=0.70)}")
+
+        print(f"\n\nInput Sentence #2: {input_sentence_2}")
+        print(f"Reply #6: {self.reply(input_sentence_2)}")
+        # print(f"\nInput Sentence #3: {input_sentence_3}")
+        # print(f"Reply #7: {self.reply(input_sentence_3)}")
+
+        if chat:
+            self._chat_over_command_line()
 
 def main():
-    model = AnnotationGenerator(trained_model='bidir_adam_100ep_512ld',
-                        models_filepath='./models/',
-                        data_filepath='./data/',
-                        final_weights_fp='_weights',
-                        data_name='data',
-                        use_bidirectional=True,
-                        latent_dim=512,
-                        temp=1,
-                        start_char='\v',
-                        end_char='\b')
+    filepath = '../../cap3_models/models/'
+    name = 'baseline_rms_800ep_512ld'
+    weights = '-weights_final'
+    model = AnnotationGenerator(use_weights=True, models_filepath=filepath, data_filepath=filepath,
+                                trained_model=name, data_name=name, final_weights_fp=weights,
+                                latent_dim=512)
 
     model.test_run(chat=True)
 

@@ -21,14 +21,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="logo" href="/#myPage">
+        <a class="logo" href="#myPage">
           <img src="../static/img/kairoi_logo_blue_orange_dark.png" width=60px height=60px>
         </a>
-        <a class="navbar-brand" href="/#myPage">Kairoi</a>
+        <a class="navbar-brand" href="#myPage">Kairoi</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/#mission">MISSION</a></li>
           <li><a href="/#explain">EXPLAIN LYRICS</a></li>
           <li><a href="/#about">ABOUT KAIROI</a></li>
           <li><a href="/#model-mechanics">MODEL MECHANICS</a></li>
@@ -45,11 +44,11 @@
       <div class="col-sm-8">
         <h2>Lyrics Explained</h2>
           <h3><b>Input Lyrics</b></h3>
-          <span class="border border-secondary rounded"><h4>{{lyrics}}</h4></span>
+          <h4>{{lyrics}}</h4>
           <h3><b>Generated Explanation</b></h3>
           <div class="card">
             <div class="card-body">
-              <span class="border border-secondary rounded"><h4>{{explanation}}</h4></span>
+              <h4>{{explanation}}</h4>
             </div>
           </div>
           <table class="table">
@@ -68,14 +67,17 @@
             </tbody>
           </table>
 
+
+
           <!-- Explain Same Lyric Again
           <form method=get action='/'>
             <button type="submit" class="btn btn-primary">Try Again</button>
-          </form>-->
+          </form>
+          -->
 
           <!-- Go Back to Home Page -->
           <form method=get action='/#explain'>
-            <button type="submit" class="btn btn-primary" style="background-color:#295B60">Try Another Lyric</button>
+            <button type="submit" class="btn btn-primary" color=#295B60>Try Another Lyric</button>
           </form>
 
           <!-- Submit Rating of Annotation (& then go home)
@@ -87,7 +89,9 @@
             <button type="submit" class="btn btn-primary">Submit Rating</button>
           </form>
           -->
+
         </div>
+
   </div>
 
   <footer class="container-fluid text-center">

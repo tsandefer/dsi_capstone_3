@@ -1,11 +1,6 @@
 .wrapper {
   text-align: right;
 }
-
-#ex1Slider .slider-selection {
-	background: #BABABA;
-}
-
 .diagrams {
   display: block;
   margin-left: auto;

@@ -40,55 +40,21 @@
 
 
   <!-- Container (Generation Section) -->
-  <div id="explain" class="container-fluid">
+  <div id="thanks" class="container-fluid">
     <div class="row">
       <div class="col-sm-8">
-        <h2>Lyrics Explained</h2>
-          <h3><b>Input Lyrics</b></h3>
-          <span class="border border-secondary rounded"><h4>{{lyrics}}</h4></span>
-          <h3><b>Generated Explanation</b></h3>
-          <div class="card">
-            <div class="card-body">
-              <span class="border border-secondary rounded"><h4>{{explanation}}</h4></span>
+        <br>
+        <h3>Great to hear from you, {{name}}!</h3>
+        <br>
+          <h4>Thank you for your interest, I'll get back to you within 24 hours.</h4>
             </div>
           </div>
-          <table class="table">
-            <caption><h3>Specifications</h3></caption>
-            <thead>
-              <tr>
-                <th scope="col">Temperature</th>
-                <th scope="col">Trained Model</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{{sentence}}</td>
-                <td>{{model}}</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <!-- Explain Same Lyric Again
-          <form method=get action='/'>
-            <button type="submit" class="btn btn-primary">Try Again</button>
-          </form>-->
-
+          <br>
           <!-- Go Back to Home Page -->
-          <form method=get action='/#explain'>
-            <button type="submit" class="btn btn-primary" style="background-color:#295B60">Try Another Lyric</button>
+          <form method=get action='/#myPage'>
+            <button type="submit" class="btn btn-primary" color=#295B60>Back to Home Page</button>
           </form>
-
-          <!-- Submit Rating of Annotation (& then go home)
-          <form method=get action='/#explain'>
-            <div class="form-group">
-              <label for="formControlRange">How'd I do?</label>
-              <input type="range" name=rating class="form-control-range" id="formControlRange">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit Rating</button>
-          </form>
-          -->
         </div>
-  </div>
 
   <footer class="container-fluid text-center">
     <a href="#myPage" title="To Top">
