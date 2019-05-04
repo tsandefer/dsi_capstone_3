@@ -1,12 +1,11 @@
-# Neural Machine Translation: Explaining The Meaning Behind Lyrics
+# Kairoi & Neural Machine Translation: 
+# Explaining The Meaning Behind Lyrics
 ![](images/kairoi_header.png)
 ### Generating Lyric Explanations with Seq2Seq LSTMs
 
-*by Taite Sandefer* | *Capstone III Project for Galvanize Data Science Immersive, Week 12*
+*by Taite Sandefer* | *Capstone III Project for Galvanize DSI, Week 12*
 
-**Currently Under Construction: Please refer to [Capstone Showcase Poster](taite_sandefer_capstone_project_poster.pdf) or [Showcase Helper Handout](sampling_w_diversity.png) for additional info**
-
-*App Coming Soon!* | *Last Updated: 5/4/19*
+*App Coming Soon!* | *Last Updated: 5/4/19* | *Please refer to [Capstone Showcase Poster](taite_sandefer_capstone_project_poster.pdf) for additional info*
 
 ## Table of Contents
 - [Introduction](#introduction)
