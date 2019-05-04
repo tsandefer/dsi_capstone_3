@@ -6,19 +6,19 @@
 
 *by Taite Sandefer*
 
-*Last Updated: 4/24/19*
+*Last Updated: 5/4/19*
 <br>
-**Currently Under Construction: Final Revisions expected by 5/1/19**
+**Currently Under Construction: Please refer to [Capstone Showcase Poster](taite_sandefer_capstone_project_poster.pdf) or [Showcase Helper Handout](sampling_w_diversity.png) for additional info**
 <br>
 *App Coming Soon!*
 
 ## Table of Contents
 - [Introduction](#introduction)
   - [Background](#background)
-  - [Kairoi](#kairoi)
+  - [Product](#product)
   - [Tech Stack](#tech-stack)
 - [Data Overview](#data-overview)
-  -[Preparation](#preparation)
+  - [Preparation](#preparation)
 - [Seq2Seq LSTMs](#seq2seq-lstms)
   - [Model Architecture](#model-architecture)
 - [Results](#results)
@@ -40,19 +40,24 @@ The primary goal of Genius is to explain lyrics and help make them more accessib
   <img src="images/genius_demo2.gif" width = 800>
 </p>
 
-## Kairoi
-Kairoi is the plural form of the ancient Greek word [Kairos](https://en.wikipedia.org/wiki/Kairos), meaning "the right, critical, or opportune moment for action."
-
-In Rhetoric, *kairos* describes a rhetor's "ability to adapt to and take advantage of changing, contingent circumstance," and is understood to be a key factor in their success.
-
-According to ancient Greeks, Kairos was the god of opportunity and the fleeting moment.
-         
-> "Running swiftly, balancing on the razor's edge, bald but with a lock of hair on his forehead, he wears no clothes; if you grasp him from the front, you might be able to hold him, but once he has moved on not even Zeus himself can pull him back: this is a symbol of Kairos, the brief moment in which things are possible." -- Aesop, [Fables 536 (from Phaedrus 5. 8)](https://www.theoi.com/Daimon/Kairos.html)
+## Product
+When I was developing the application for this model for users to demo during the Capstone Showcase, it seemed like a good idea to start branding this product. I picked a name and crafted a logo that I felt represented my mission for this project. 
 
 <p align="center">
-  <img src="app/static/img/kairoi_logo_blue_orange.png" width = 500>
+  <img src="app/static/img/kairoi_logo_blue_orange.png" width = 300>
 </p>
 
+### Mission
+<p align="center">
+  <img src="images/mission.png" width = 800>
+</p>
+
+### Kairoi
+Kairoi is the plural form of [Kairos](https://en.wikipedia.org/wiki/Kairos), a rhetorical term that describes a speaker's ability to adapt to and take advantage of changing, contingent circumstance. To the ancient Greeks, Kairos was the god of opportunity and the fleeting moment.
+
+> "Running swiftly, balancing on the razor's edge, bald but with a lock of hair on his forehead, he wears no clothes; if you grasp him from the front, you might be able to hold him, but once he has moved on not even Zeus himself can pull him back: this is a symbol of Kairos, the brief moment in which things are possible." -- Aesop, [Fables 536 (from Phaedrus 5. 8)](https://www.theoi.com/Daimon/Kairos.html)
+
+In NLP, text is often treated like a sequential time-series problem. Many of today's tools use frequentist statistical practices to identify patterns that tend to capture syntax more than semantic meaning. State of the art tools, like Seq2Seq and Attention Mechanisms, focus on finding the right sequential patterns in text, which is why they embody the qualitative and subjective concept of time that the word Kairos represents.
 
 ## Tech Stack 
 - AWS EC2
@@ -97,13 +102,26 @@ Okay, okay... Technically, 19 artists. Searching for annotations from Nicki Mina
   <img src="app/static/img/inference.png" width = 400>
 </p>
 
+### Sampling with Diversity 
+When selecting from the pool of potential characters during generation, we use a method called "sampling with diversity" that helps introduce some randomness back into the equation. Language is self-similar in that we often see repeating patterns in our words (and characters!), but true natural language these patterns in ways that are slightly transformed each time they are reflected. Music, images, and art tend to be highly self-similar as well. Think: the swirls in Vincent Van Goh's <i>Starry Night</i>, which are similar to each other, but not exactly the same. 
+
+That's why they're beautiful. And that's also part of what makes NLP such an interesting and challenging problem. It's easy to write an algorithm that replicate patterns over and over again -- but it's much more difficult to develop one that can execute slight transformations on those patterns in the way that the human mind so naturally does. 
+
+Alright, back to sampling with diversity. So, basically, we're not just picking the most likely character. Instead, we randomly sample from the probability distribution of possible characters. The most likely character is still the most likely, but this gives us a chance of picking something else. We then change this distribution by turning the diversity temperature higher or lower, which either evens out the playing field or makes the most likely characters even more likely. 
+
+Here's a quick diagram to give you an idea of what that looks like:
+
+<p align="center">
+  <img src="sampling_w_diversity.png" width = 1000>
+</p>
+
 
 # Results
 ## Examples (So Far)
 <p align="center">
-  <img src="images/example_no_temp.png" width = 400>
+  <img src="images/example_no_temp.png" width = 800>
   <br>
-  <img src="images/example_temp_71.png" width = 400>
+  <img src="images/example_temp_71.png" width = 800>
 </p>
 
 
@@ -115,6 +133,10 @@ Okay, okay... Technically, 19 artists. Searching for annotations from Nicki Mina
 
 
 ## Performance
+Evaluating performance for a task like this isn't easy on a large scale. While we do care, to some degree, about the model's ability to <i>accurately</i> predict the exact next character, what we really care about is that it produces a cohesive sequence of characters that not only follow the syntax that we're familiar with, but also is able to <i>explain</i> the input lyrics, like a human might. So, although model accuracy and categorical cross-entropy play a role, they're probably not what we're looking for in a measure of whether the model is actually performing well or not.
+
+Recent research projects have used a measure called the [BLEU score](https://www.aclweb.org/anthology/P02-1040.pdf). However, my [Capstone II project](https://github.com/tsandefer/dsi_capstone_2) focused on creating a system for evaluating lyrics and annotations, which was intended to be used to measure performance in this phase of the project. Although I have not yet implemented this part of the project, partially because of issues in the data itself and difficulty measuring the performance of the evaluation system itself, it is certainly the most important next step in this project. 
+
 - BLEU score
 > "More importantly, the performance of the RNNsearch is as high as that of the conventional phrase-based
 translation system (Moses), when only the sentences consisting of known words are considered."
