@@ -8,7 +8,9 @@
 
 *Last Updated: 5/4/19*
 <br>
+<br>
 **Currently Under Construction: Please refer to [Capstone Showcase Poster](taite_sandefer_capstone_project_poster.pdf) or [Showcase Helper Handout](sampling_w_diversity.png) for additional info**
+<br>
 <br>
 *App Coming Soon!*
 
@@ -47,9 +49,8 @@ When I was developing the application for this model for users to demo during th
   <img src="app/static/img/kairoi_logo_blue_orange.png" width = 300>
 </p>
 
-### Mission
 <p align="center">
-  <img src="images/mission.png" width = 800>
+  <img src="images/kairoi_mission.png" width = 800>
 </p>
 
 ### Kairoi
