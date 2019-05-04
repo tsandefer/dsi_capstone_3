@@ -1,18 +1,12 @@
 # Neural Machine Translation: Explaining The Meaning Behind Lyrics
-![](images/genius_header22.png)
+![](images/kairoi_header.png)
 ### Generating Lyric Explanations with Seq2Seq LSTMs
 
-*Capstone III Project for Galvanize Data Science Immersive, Week 12*
+*by Taite Sandefer* | *Capstone III Project for Galvanize Data Science Immersive, Week 12*
 
-*by Taite Sandefer*
-
-*Last Updated: 5/4/19*
-<br>
-<br>
 **Currently Under Construction: Please refer to [Capstone Showcase Poster](taite_sandefer_capstone_project_poster.pdf) or [Showcase Helper Handout](sampling_w_diversity.png) for additional info**
-<br>
-<br>
-*App Coming Soon!*
+
+*App Coming Soon!* | *Last Updated: 5/4/19*
 
 ## Table of Contents
 - [Introduction](#introduction)
