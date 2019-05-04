@@ -1,5 +1,4 @@
-# Kairoi & Neural Machine Translation: 
-# Explaining The Meaning Behind Lyrics
+# Neural Machine Translation: Explaining The Meaning Behind Lyrics
 ![](images/kairoi_header.png)
 ### Generating Lyric Explanations with Seq2Seq LSTMs
 
@@ -117,9 +116,9 @@ Here's a quick diagram to give you an idea of what that looks like:
 # Results
 ## Examples (So Far)
 <p align="center">
-  <img src="images/example_no_temp.png" width = 800>
+  <img src="images/no_div_example.png" width = 800>
   <br>
-  <img src="images/example_temp_71.png" width = 800>
+  <img src="images/example_temp71.png" width = 800>
 </p>
 
 # Future Work & Improvements
