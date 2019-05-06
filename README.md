@@ -21,8 +21,19 @@
 
 # Introduction
 ## Background
+### Motivation 
+As a rhetoric student, I wanted to further explore how neural networks could pick up on the more subtle semantic patterns in natural language. 
+
+In linguistics, [Pragmatics](https://en.wikipedia.org/wiki/Pragmatics) is the study of meaning with respect to goals and intentions. However, one of the main challenges in NLP is a lack of labeled data, especially in regard to something like pragmatics. 
+
+Luckily, I remembered a website that I had used in an experimental high school English class. My teacher frequently utilized [Genius.com](https://genius.com/) for close reading assignments in our class, where he would post exerpts from Shakespear or The Great Gatsby, and students would "annotate" selections from the passages by highlighting them and explaining their literary functions. Here's [an example of one of my annotations](https://genius.com/1078024) from way back in high school, if you're interested!
+
+I always loved close reading, and thought it was a great way to develop a deeper understanding of a text. Could I develop an algorithm that could close read, like we do? 
+
+Well, Genius.com wasn't initially intended to be a site for English class close reading. It was even called "Rap Genius" at the time because it was meant to be a community where users could read and contribute these annotations to explain rap lyrics. 
+
 ### What is Genius?
-[Genius](https://genius.com/), formerly "Rap Genius," is a website where users can view and add annotations to lyrics that help explain their meaning and context.
+[Genius](https://genius.com/) is an online community where users browse, rate, and create annotations for lyrics to help explain their meaning and context.
 
 <p align="center">
   <img src="images/genius_biggest_collection.png" width = 400>
