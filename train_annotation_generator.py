@@ -222,8 +222,7 @@ class Seq2Seq_Train_Annotation_Generator(object):
         encoder_states = [state_h, state_c]
 
         # Set up the decoder, using 'encoder_states' as initial state.
-        # We set up our decoder to return full output sequences (Jerry lines)
-        # and to return internal states as well.
+        # We set up our decoder to return full output sequences and to return internal states as well.
         # We don't use the return states in the training model, but we will use them in inference.
 
         decoder_inputs = Input(shape=(None, self.num_decoder_tokens), name='decoder_inputs')
@@ -232,8 +231,7 @@ class Seq2Seq_Train_Annotation_Generator(object):
         decoder_dense = Dense(self.num_decoder_tokens, activation='softmax', name='decoder_dense')
         decoder_outputs = decoder_dense(decoder_outputs)
 
-        # Define the model that will turn
-        # `encoder_input_data` & `decoder_input_data` into `decoder_target_data`
+        # Define the model that will turn `encoder_input_data` & `decoder_input_data` into `decoder_target_data` (Teacher training)
         self.model = Model([encoder_inputs, decoder_inputs], decoder_outputs)
 
         print(self.model.summary())
