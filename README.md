@@ -158,9 +158,28 @@ Many, many thanks to all of those who have been a part of this journey with me!
 
 - [Genius.com](https://genius.com/)
 - DSI instructors: Frank Burkholder, Danny Lumian, Kayla Thomas
-- Cohort Peers working with NLP: Matt Devor, Aidan Jared, Lei Shan
+- Cohort Peers working with NLP: [Matt Devor](https://github.com/MattD82), [Lei Shan](https://github.com/slme1109), [Aiden Jared](https://github.com/Aidan-Jared)
+- Galvanize Alumni
+  - [Erin Desmond's ABC Music](https://github.com/erindesmond/ABC-MUSIC)
 - johnwmillr's [LyricsGenius](https://github.com/johnwmillr/LyricsGenius)
+
+## Tutorials Used
+- [Seq2Seq with Keras](https://blog.keras.io/a-ten-minute-introduction-to-sequence-to-sequence-learning-in-keras.html)
 - [TensorFlow's Seq2Seq](https://github.com/tensorflow/nmt)
 
+## Helpful Blogs 
+- [Seq2Seq: The Clown Car of Deep Learning, by Dev Nag](https://medium.com/@devnag/seq2seq-the-clown-car-of-deep-learning-f88e1204dac3)
+- [How to Define an Encoder-Decoder Sequence-to-Sequence Model for Neural Machine Translation in Keras by Jason Brownlee](https://machinelearningmastery.com/define-encoder-decoder-sequence-sequence-model-neural-machine-translation-keras/)
+- [Tensorflow Seq2Seq, by Illia Polosukhin](https://medium.com/@ilblackdragon/tensorflow-sequence-to-sequence-3d9d2e238084)
+
+## StackOverflow Posts
+- [Explaining Temperature in LSTMs](https://cs.stackexchange.com/questions/79241/what-is-temperature-in-lstm-and-neural-networks-generally)
+
+## Lectures 
+[Stanford's CS224N course lecture on Transformers and Self-Attention](https://www.youtube.com/watch?v=5vcj8kSwBCY)
+
+## Important Papers
+- [Sequence to Sequence Learning with Neural Networks (2014)](https://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf)
+- [Attention is All You Need (2017)](https://arxiv.org/abs/1706.03762)
 
 
