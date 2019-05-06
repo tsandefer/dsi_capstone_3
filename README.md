@@ -1,5 +1,6 @@
-# Neural Machine Translation: Explaining The Meaning Behind Lyrics
 ![](images/kairoi_header.png)
+# Neural Machine Translation: Explaining The Meaning Behind Lyrics
+![](images/genius_header22.png)
 ### Generating Lyric Explanations with Seq2Seq LSTMs
 
 *by Taite Sandefer* | *Capstone III Project for Galvanize DSI, Week 12*
