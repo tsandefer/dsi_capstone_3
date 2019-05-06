@@ -123,7 +123,7 @@ Alright, back to sampling with diversity. So, basically, we're not just picking 
 Here's a quick diagram to give you an idea of what that looks like:
 
 <p align="center">
-  <img src="sampling_w_diversity.png" width = 1000>
+  <img src="images/sampling_w_diversity.png" width = 1000>
 </p>
 
 
