@@ -44,7 +44,18 @@ The primary goal of Genius is to explain lyrics and help make them more accessib
   <img src="images/genius_demo2.gif" width = 800>
 </p>
 
-I ended up pulling in a total of 9,828 lyric-annotation pairs from the [Genius.com API](https://docs.genius.com/) that came from the most popular songs of the top 20 artists on Genius. These artists are mostly from hip-hop subgenres. 
+This is effectively a dataset of labeled meaning, if we can assume that these crowdsourced annotations tend to truly "explain" the meaning behind their respective lyrics. Just like any real-world dataset, this assumption might be a stretch, since plenty of these annotations go off on unrelated tangents or focus on cultural context that isn't generalizable.
+
+Although this dataset is far from ideal, it still might be useful in training a model that can explain user-input lyrics. So let's give it a try!
+
+## Neural Machine Translation 
+The semantic and contextual similarity between these lyrics and their annotations allows us to view this as a translation problem. In recent years, the Seq2Seq model architecture has had a successful track record in translation tasks, such as this one. 
+
+Can a Seq2Seq LSTM model use the linguistic patterns in the data to learn how to explain lyrics? 
+
+<p align="center">
+  <img src="images/TranslationFlow.png" width = 800>
+</p>
 
 ## Product
 When I was developing the application for this model for users to demo during the Capstone Showcase, it seemed like a good idea to start branding this product. I picked a name and crafted a logo that I felt represented my mission for this project. 
@@ -72,6 +83,8 @@ In NLP, text is often treated like a sequential time-series problem. Many of tod
 # Data Overview
 ## Genius' Top 20 Artists 
 
+I ended up pulling in a total of 9,828 lyric-annotation pairs from the [Genius.com API](https://docs.genius.com/) that came from the most popular songs of the top 20 artists on Genius. These artists are mostly from hip-hop subgenres. 
+
 <p align="center">
   <img src="images/artists.png" width = 800>
 </p>
@@ -90,7 +103,6 @@ Upon my first go-round, I found that there were nearly 200 potential characters 
 
 
 # Seq2Seq LSTMs
-
 ## Model Architecture
 > "Specifically, an NMT system first reads the source sentence using an encoder to build a "thought" vector, a sequence of numbers that represents the sentence meaning; a decoder, then, processes the sentence vector to emit a translation, as illustrated in Figure 1. This is often referred to as the encoder-decoder architecture. In this manner, NMT addresses the local translation problem in the traditional phrase-based approach: it can capture long-range dependencies in languages, e.g., gender agreements; syntax structures; etc., and produce much more fluent translations as demonstrated by Google Neural Machine Translation systems."
 
