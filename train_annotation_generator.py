@@ -1,10 +1,10 @@
 '''CREDITS
-    Based on Keras' Seq2Seq tutorial
-        https://blog.keras.io/a-ten-minute-introduction-to-sequence-to-sequence-learning-in-keras.html
+Based on Keras' Seq2Seq tutorial
+    https://blog.keras.io/a-ten-minute-introduction-to-sequence-to-sequence-learning-in-keras.html
 
-    Adapted from OOP version of above tutorial written by cohort peer working on similar project
-        GitHub: MattD82
-        Matt's project: https://github.com/MattD82/Seinfeld-Neural-seq2seq-Chatbot
+Adapted from OOP version of above tutorial written by cohort peer working on similar project
+    GitHub: MattD82
+    Matt's project: https://github.com/MattD82/Seinfeld-Neural-seq2seq-Chatbot
 '''
 
 import pandas as pd
@@ -12,7 +12,7 @@ import numpy as np
 import re
 
 from keras.models import Model
-from keras.layers import Input, LSTM, Dense, Bidirectional, Concatenate
+from keras.layers import Input, LSTM, Dense
 from keras.callbacks import ModelCheckpoint
 
 class Seq2Seq_Train_Annotation_Generator(object):
