@@ -71,10 +71,8 @@ class Seq2Seq_Train_Annotation_Generator(object):
         for idx, line in enumerate(clean_txt_lines):
             line = line.lower().strip()
             line = re.sub(r"[^a-zA-Z?.!, ';:#$@&%*-+=\n\d+]", "", line, re.M)
-            # collapses multiple spaces into just one space
-            line = re.sub(r'(  +)', " ", line, re.M)
+            line = re.sub(r'(  +)', " ", line, re.M) # collapses multiple spaces into just one space
             clean_txt_lines[idx] = line
-            # line = self.start_token + line + self.end_token
         return clean_txt_lines
 
     def prep_text(self):
@@ -242,9 +240,9 @@ class Seq2Seq_Train_Annotation_Generator(object):
 
         checkpoint = ModelCheckpoint(filepath=self.weights_file_path, save_best_only=True,
                                      save_weights_only=True, verbose=1)
-
+        
         self.model.compile(optimizer=self.optimizer, loss=self.loss, metrics=self.metrics)
-
+        
         self.history = self.model.fit([self.encoder_input_data, self.decoder_input_data],
                         self.decoder_target_data, batch_size=self.batch_size,
                         epochs=self.num_epochs, validation_split=0.1, callbacks=[checkpoint])
