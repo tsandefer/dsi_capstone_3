@@ -65,15 +65,9 @@ Kairoi is the plural form of [Kairos](https://en.wikipedia.org/wiki/Kairos), a r
 In NLP, text is often treated like a sequential time-series problem. Many of today's tools use frequentist statistical practices to identify patterns that tend to capture syntax more than semantic meaning. State of the art tools, like Seq2Seq and Attention Mechanisms, focus on finding the right sequential patterns in text, which is why they embody the qualitative and subjective concept of time that the word Kairos represents.
 
 ## Tech Stack 
-- AWS EC2
-- Flask
-- Docker
-- Tensorflow
-- Keras
-- SKLearn
-- NumPy
-- Pandas
-- Matplotlib
+<p align="center">
+  <img src="images/tech_stack_c3.png" width = 700>
+</p>
 
 # Data Overview
 ## Genius' Top 20 Artists 
