@@ -65,7 +65,9 @@ In NLP, text is often treated like a sequential time-series problem. Many of tod
 
 # Data Overview
 ## Genius' Top 20 Artists 
-Okay, okay... Technically, 19 artists. Searching for annotations from Nicki Minaj's work was unsuccessful, and since I already had ~10k pairs of data from other artists, I decided to cut my losses. 
+Okay, okay... Technically, 19 artists. Querying the API for annotations from Nicki Minaj's work was not immediately successful. 
+
+Since I already had ~10k pairs of data from other artists, and only two weeks to do this project, I decided to move forward. 
 
 <p align="center">
   <img src="images/artists.png" width = 800>
