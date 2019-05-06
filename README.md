@@ -25,7 +25,7 @@
 ### Motivation 
 As a rhetoric student, I wanted to further explore how neural networks could pick up on the more subtle semantic patterns in natural language. However, one of the main challenges in NLP is a lack of labeled data, especially in regard to something like [pragmatics](https://en.wikipedia.org/wiki/Pragmatics) (the study of meaning, with respect to goals and intentions). 
 
-Luckily, I remembered a website that I had used in an experimental high school English class. My teacher frequently utilized [Genius.com](https://genius.com/) for close reading assignments in our class, where he would post exerpts from Shakespear or The Great Gatsby, and students would "annotate" selections from the passages by highlighting them and explaining their literary functions. Here's [an example of one of my annotations](https://genius.com/1078024) from way back in high school, if you're interested!
+Luckily, I remembered a website that I had used in an experimental high school English class. My teacher frequently utilized [Genius.com](https://genius.com/) for close reading assignments in our class, where he would post exerpts from Shakespeare or The Great Gatsby, and students would "annotate" selections from the passages by highlighting them and explaining their literary functions. Here's [an example of one of my annotations](https://genius.com/1078024) from way back in high school, if you're interested!
 
 I always loved close reading, and thought it was a great way to develop a deeper understanding of a text. Could I develop an algorithm that could close read, like we do? 
 
