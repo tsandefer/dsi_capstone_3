@@ -23,15 +23,15 @@
 # Introduction
 ## Background
 ### Motivation 
-As a rhetoric student, I wanted to further explore how neural networks could pick up on the more subtle semantic patterns in natural language. However, one of the main challenges in NLP is a lack of labeled data, especially in regard to something like [pragmatics](https://en.wikipedia.org/wiki/Pragmatics)(the study of meaning, with respect to goals and intentions). 
+As a rhetoric student, I wanted to further explore how neural networks could pick up on the more subtle semantic patterns in natural language. However, one of the main challenges in NLP is a lack of labeled data, especially in regard to something like [pragmatics](https://en.wikipedia.org/wiki/Pragmatics) (the study of meaning, with respect to goals and intentions). 
 
 Luckily, I remembered a website that I had used in an experimental high school English class. My teacher frequently utilized [Genius.com](https://genius.com/) for close reading assignments in our class, where he would post exerpts from Shakespear or The Great Gatsby, and students would "annotate" selections from the passages by highlighting them and explaining their literary functions. Here's [an example of one of my annotations](https://genius.com/1078024) from way back in high school, if you're interested!
 
 I always loved close reading, and thought it was a great way to develop a deeper understanding of a text. Could I develop an algorithm that could close read, like we do? 
 
-### What is Genius?
-Well, Genius.com wasn't initially intended to be a site for English class close reading. It was even called "Rap Genius" at the time because it was meant to be a community where users could read and contribute these annotations to explain rap lyrics. 
+Genius.com wasn't initially intended to be a site for English class close reading. It was even called "Rap Genius" at the time because it was meant to be a community where users could read and contribute these annotations to explain rap lyrics. 
 
+### What is Genius?
 [Genius](https://genius.com/) is an online community where users browse, rate, and create annotations for lyrics to help explain their meaning and context.
 
 <p align="center">
@@ -79,13 +79,14 @@ In NLP, text is often treated like a sequential time-series problem. Many of tod
 Okay, okay... Technically, 19 artists. Querying the API for annotations from Nicki Minaj's work was not immediately successful. Since I already had ~10k pairs of data from other artists, and only two weeks to do this project, I decided to move forward. 
 
 ## Preparation
-Similarly to other examples of NMT, I decided not to stem or lemmatize my text. Instead, I lowercased the text, which reduced the number of potential tokens by 26 for the input and target vectors. I also decided to strip out anything that wasn't a letter, number, space, newline character, or one of my chosen punctuation characters. 
-
-Upon my first go-round, I found that there were nearly 200 potential characters for both lyric and annotation texts, due to some strange non-ASCII characters being introduced. After some investigation, I found that these characters were fairly rare, and didn't add much to the texts when they occurred. So I decided to simply strip them out, rather than keeping them (which would increase dimensionality unnecessarily) or dropping the rows entirely (which would reduce the dataset by about 1k examples, even though there were only one or two strange characters in these examples that didn't add much to the meaning of the text). 
 
 <p align="center">
   <img src="images/data_prep.png" width = 800>
 </p>
+
+Similarly to other examples of NMT, I decided not to stem or lemmatize my text. Instead, I lowercased the text, which reduced the number of potential tokens by 26 for the input and target vectors. I also decided to strip out anything that wasn't a letter, number, space, newline character, or one of my chosen punctuation characters. 
+
+Upon my first go-round, I found that there were nearly 200 potential characters for both lyric and annotation texts, due to some strange non-ASCII characters being introduced. After some investigation, I found that these characters were fairly rare, and didn't add much to the texts when they occurred. So I decided to simply strip them out, rather than keeping them (which would increase dimensionality unnecessarily) or dropping the rows entirely (which would reduce the dataset by about 1k examples, even though there were only one or two strange characters in these examples that didn't add much to the meaning of the text). 
 
 
 # Seq2Seq LSTMs
