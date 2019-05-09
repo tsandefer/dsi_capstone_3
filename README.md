@@ -1,9 +1,8 @@
-![](images/kairoi_header.png)
-# Neural Machine Translation: Explaining The Meaning Behind Lyrics
-![](images/genius_header22.png)
-### Generating Lyric Explanations with Seq2Seq LSTMs
+<p align="center">
+  <img src="images/markdown_header_1.png">
+</p>
 
-*by Taite Sandefer* | *Capstone III Project for Galvanize DSI, Week 12* | *Last Updated: 5/8/19* | *[Capstone Showcase Poster](taite_sandefer_capstone_project_poster.pdf)*
+*Last Updated: 5/8/19* | *[Capstone Showcase Poster](taite_sandefer_capstone_project_poster.pdf)*
 
 ## Check out [the Kairoi App](https://kairoi-flask-app.herokuapp.com/), deployed via Heroku!
 
