@@ -33,6 +33,10 @@
 - [ ] Use t-SNE to visualize the difference between the generated explanation and the currently published one
 - [ ] Give option for user to rate quality of generated explanation
 - [ ] Carousel page of "Best Explanations", populated by the top 30%
+- [ ] Add options to use more advanced models (Training in progress!) 
+  - [ ] Seq2Seq with Bidirectional LSTMs
+  - [ ] Seq2Seq with Attention Decoder (use transfer learning with pre-trained character or word embeddings)
+  - [ ] Transformer Model (Fully Attention-Based)
 
 ## Table of Contents
 - [Introduction](#introduction)
