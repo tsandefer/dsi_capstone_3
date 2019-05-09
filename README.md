@@ -76,7 +76,7 @@ This is effectively a dataset of labeled meaning, if we can assume that these cr
 
 Although this dataset is far from ideal, it still might be useful in training a model that can explain user-input lyrics. So let's give it a try!
 
-## Neural Machine Translation 
+### Neural Machine Translation 
 The semantic and contextual similarity between these lyrics and their annotations allows us to view this as a translation problem. In recent years, the Seq2Seq model architecture has had a successful track record in translation tasks, such as this one. 
 
 Can a Seq2Seq LSTM model use the linguistic patterns in the data to learn how to explain lyrics? 
