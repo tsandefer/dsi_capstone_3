@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/markdown_header_1.png">
+  <img src="images/markdown_header_2.png">
 </p>
 
 *Last Updated: 5/8/19* | *[Capstone Showcase Poster](taite_sandefer_capstone_project_poster.pdf)*
