@@ -3,9 +3,37 @@
 ![](images/genius_header22.png)
 ### Generating Lyric Explanations with Seq2Seq LSTMs
 
-*by Taite Sandefer* | *Capstone III Project for Galvanize DSI, Week 12*
+*by Taite Sandefer* | *Capstone III Project for Galvanize DSI, Week 12* | *Last Updated: 5/8/19* | *[Capstone Showcase Poster](taite_sandefer_capstone_project_poster.pdf)*
 
-*App Coming Soon!* | *Last Updated: 5/4/19* | *[Capstone Showcase Poster](taite_sandefer_capstone_project_poster.pdf)*
+## Check out [the Kairoi App](https://kairoi-flask-app.herokuapp.com/), deployed via Heroku!
+
+### Application MVP:
+- [x] Build Basic Flask App with HTML and CSS
+- [x] Add functionality to translate lyrics
+- [x] Create Cohesive Brand
+  - [x] Cohesive color & style
+  - [x] Design Logo
+  - [x] Pick meaningful name
+  - [x] Write mission statement
+- [x] Add links to GitHub and contact info
+- [x] Functioning menu bar
+- [x] Additional choices and functionality for explaining lyrics
+  - [x] Different models
+  - [x] Diversity Temperature slider
+  - [x] Sample lyric dropdown
+  - [x] User-input lyrics
+- [x] Deploy app via Heroku
+
+### Application Next Steps:
+- [ ] Customize domain name 
+- [ ] Formatting of "Explain Lyrics" page
+- [ ] Have Diversity Temperature slider show range or current value
+- [ ] Contact form
+- [ ] General spacing and alignment of pages
+- [ ] Use trained Doc2Vec model (from Capstone II) to evaluate generated explanation
+- [ ] Use t-SNE to visualize the difference between the generated explanation and the currently published one
+- [ ] Give option for user to rate quality of generated explanation
+- [ ] Carousel page of "Best Explanations", populated by the top 30%
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -107,6 +135,7 @@ Upon my first go-round, I found that there were nearly 200 potential characters 
 > "Specifically, an NMT system first reads the source sentence using an encoder to build a "thought" vector, a sequence of numbers that represents the sentence meaning; a decoder, then, processes the sentence vector to emit a translation, as illustrated in Figure 1. This is often referred to as the encoder-decoder architecture. In this manner, NMT addresses the local translation problem in the traditional phrase-based approach: it can capture long-range dependencies in languages, e.g., gender agreements; syntax structures; etc., and produce much more fluent translations as demonstrated by Google Neural Machine Translation systems."
 
 ### Training Phase
+The model was trained on an AWS EC2 p2.xl instance, which had GPU that reduced training time from +100 hours to only 6 hours for 100 epochs and a batch size of 64.
 
 <p align="center">
   <img src="app/static/img/s2s_training.png" width = 400>
@@ -137,6 +166,12 @@ Here's a quick diagram to give you an idea of what that looks like:
 
 
 # Results
+I've found, by reading through many generated explanations, is that this model tends to perform best when we use a sampling with diversity temperature between 0.5 and 0.75, meaning that the most likely characters become a little more likely. In other words, the distribution that we're picking from is slightly less diverse. 
+
+I've noticed that the model trained with 256 latent dimensions tends to generate explanations that syntactically make sense, but don't quite connect with the lyrics they're explaining. However, the model with 512 latent dimensions does tend to reflect words and phrases that better connect with their respective lyrics, but aren't grammatically coherent. This seems to be consistent with the idea that the less complex model is picking up on less complex patterns (syntax), while the more complex model loses that signal but is able to better connect with context. 
+
+I'll also note that the model isn't very discerning when it comes to the names of the artists. Generally, it uses the names of artists in the same genre to refer to the speaker of the lyrics, but it seems that it might just be repeating names it's repeatedly heard (not necessarily due to similarity across artists) due to the fact the vast majority of these lyrics could be considered to be hip hop.
+
 ## Examples (So Far)
 <p align="center">
   <img src="images/no_div_example.png" width = 800>
