@@ -31,7 +31,7 @@ class Seq2Seq_Train_Annotation_Generator(object):
                         num_epochs=100, batch_size=64, latent_dim=256,
                         optimizer='rmsprop', loss='categorical_crossentropy', metrics=['accuracy'],
                         input_text_col='ref_text', target_text_col='tate_text',
-                        start_char='\v', end_char='\b'):
+                        start_token='\v', end_token='\b'):
 
         self.model_name = model_name
         self.data_file_path = data_file_path
